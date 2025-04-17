@@ -1,7 +1,6 @@
-# GlaDOS Community Bot
-[![Discord](https://img.shields.io/badge/Discord-Community-blue?logo=discord)](https://discord.gg/X69MUr2DKm)
+# D2D, Developers to Designers
 ![Node.js](https://img.shields.io/badge/Node.js-v22.14.0-green?logo=node.js)
-![License](https://img.shields.io/badge/License-mit-yellow)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 🤖 **About** 
 D2D, is an open source platform for designers and developers to connect with each other. They can post info/help requests and also communicate with their fellow members about other various topics.
@@ -22,7 +21,7 @@ Follow these steps to set up the GlaDOS Community Bot on your local machine or s
 2. **Clone the Repository**:
    ```bash
    git clone git@github.com:your-username/d2d.git
-   cd GlaDOS-bot
+   cd d2d
 3. **Install Dependencies**:
     ```bash
     npm install
