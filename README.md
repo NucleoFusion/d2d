@@ -27,9 +27,9 @@ Follow these steps to set up the GlaDOS Community Bot on your local machine or s
     npm install
 4. **Set Up Environment Varialbes**:
     ```bash
-    cp SAMPLE.env .env
+    cp server/SAMPLE.env server/.env && cp client/SAMPLE.env client/.env
     ```
-    open the .env file and fill in the required values
+    open the .env file and fill in the required values.
 
 5. **Run the Bot**:
     ```bash
