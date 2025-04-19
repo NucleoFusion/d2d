@@ -1,7 +1,7 @@
 :root {
-  --base: #1e1e2e;
-  --sapphire: #74c7ec;
-  --crust: #11111b;
-  --mantle: #181825;
-  --text: #cdd6f4;
+  --base: #1e1e2e /*#1e1e2e*/;
+  --border: #45475a /* #74c7ec #2f3542*/;
+  --crust: #11111b /* #11111b #0d1117*/;
+  --mantle: #181825 /* #181825 #161b22*/;
+  --text: #cdd6f4 /* #cdd6f4 #8b949e*/;
 }

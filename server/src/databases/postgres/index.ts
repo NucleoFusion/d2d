@@ -10,6 +10,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-const db = drizzle(pool);
+const pgdb = drizzle(pool);
 
-export default db;
+export default pgdb;

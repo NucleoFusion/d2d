@@ -1,13 +1,10 @@
 // Starting the server
 import app from './app';
 import config from './config/config';
-import authRouter from './routes/auth';
 import valkey from './databases/valkey/valkey';
-import db from './databases/postgres';
+import pgdb from './databases/postgres';
 import { sql } from 'drizzle-orm';
 import mongoose, { connectToDatabase } from './databases/mongo/mongo';
-
-app.use('/auth', authRouter);
 
 async function startServer() {
   try {
@@ -18,7 +15,7 @@ async function startServer() {
     await valkey.ping();
     console.log('[Valkey] Connected');
 
-    await db.execute(sql`SELECT 1`);
+    await pgdb.execute(sql`SELECT 1`);
     console.log('[PostgreSQL] Connected via Drizzle');
 
     app.listen(config.port, () => {

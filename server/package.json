@@ -8,7 +8,9 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "lint": "eslint 'src/**/*.ts'",
     "clean": "rimraf **/*.js !dist/**/*",
-    "test": "jest"
+    "test": "jest",
+    "migrate:gen": "npx drizzle-kit generate",
+    "migrate": "npx drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
@@ -37,9 +39,12 @@
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
+    "bcrypt-ts": "^6.0.0",
+    "body-parser": "^2.2.0",
     "drizzle-orm": "^0.42.0",
     "iovalkey": "^0.3.1",
     "mongoose": "^8.13.2",
+    "multer": "^1.4.5-lts.2",
     "pg": "^8.14.1"
   }
 }

@@ -14,6 +14,12 @@
   <div transition:fly={{ y: -200, duration: 500 }} class="navbar">
     <div>
       <button>
+        <!-- <img -->
+        <!--   width="48" -->
+        <!--   height="48" -->
+        <!--   src="https://img.icons8.com/fluency-systems-filled/48/test-account.png" -->
+        <!--   alt="test-account" -->
+        <!-- /> -->
         <img src={profile} alt="profile icon" />
       </button>
     </div>
@@ -45,7 +51,7 @@
     margin-top: -10px;
     margin-left: 25vw;
 
-    border: solid var(--sapphire) 1px;
+    border: solid var(--border) 1px;
 
     border-radius: 20px;
     border-top-right-radius: 0;
@@ -83,7 +89,7 @@
 
     background-color: transparent;
 
-    border: solid 1px var(--sapphire);
+    border: solid 1px var(--border);
     border-radius: 5px;
 
     color: var(--text);
@@ -94,7 +100,7 @@
   li > button:hover {
     background-color: var(--text);
 
-    border: solid 1px var(--sapphire);
+    border: solid 1px var(--border);
 
     color: var(--mantle);
   }
@@ -102,6 +108,9 @@
   button:has(img) {
     background-color: transparent;
     border: none;
+
+    /*  filter: invert(75%) sepia(1%) saturate(4425%) hue-rotate(172deg)
+      brightness(79%) contrast(78%); */
   }
 
   button:hover {
