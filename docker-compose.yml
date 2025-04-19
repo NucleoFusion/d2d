@@ -39,5 +39,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  valkey:
+    container_name: d2d_valkey
+    image: valkey/valkey:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - valkey_data:/data
+    command: ["valkey-server", "--requirepass", "valkeypassword"]
+
+  mongo:
+    container_name: d2d_mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    volumes:
+      - mongo_data:/data/db
+
 volumes:
   postgres_data: {}
+  valkey_data: {}
+  mongo_data: {}
