@@ -6,7 +6,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
-    "lint": "eslint 'src/**/*.ts'"
+    "lint": "eslint 'src/**/*.ts'",
+    "clean": "rimraf **/*.js !dist/**/*"
   },
   "keywords": [],
   "author": "",
@@ -15,14 +16,24 @@
   "devDependencies": {
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
+    "@types/pg": "^8.11.13",
     "dotenv": "^16.5.0",
+    "drizzle-kit": "^0.31.0",
     "eslint": "^9.24.0",
     "express": "^5.1.0",
     "install": "^0.13.0",
     "nodemon": "^3.1.9",
     "npm": "^11.3.0",
     "prettier": "^3.5.3",
+    "prisma": "^6.6.0",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "drizzle-orm": "^0.42.0",
+    "pg": "^8.14.1"
   }
 }

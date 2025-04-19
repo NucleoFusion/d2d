@@ -1,8 +1,8 @@
-version: "3.8"
 #TODO DB Setup
 #TODO ENV filling
 services:
   server:
+    container_name: d2d_server
     build: ./server
     ports:
       - "5555:5555"
@@ -10,9 +10,13 @@ services:
       - ./server:/app
     environment:
       - NODE_ENV=development
-    #depends_on: #when doing db
+      - PORT=5555
+      - DATABASE_URL=postgresql://postgres:postgres@pg:5432/d2d
+    depends_on:
+      - pg
 
   client:
+    container_name: d2d_client
     build: ./client
     ports:
       - "5173:5173"
@@ -22,3 +26,18 @@ services:
       - NODE_ENV=development
     depends_on:
       - server
+
+  pg:
+    container_name: d2d_pg
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: d2d
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: {}
