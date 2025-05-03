@@ -1,19 +1,27 @@
 <script lang="ts">
-  import Navbar from "../components/navbar/navbar.svelte";
-
   let { children } = $props();
 </script>
 
-<Navbar />
-
+<div class="bg"></div>
 {@render children()}
 
 <style>
   @import "./global.css";
 
-  :global(body) {
-    background-color: var(--crust);
+  .bg {
+    position: absolute;
 
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg);
+    overflow: hidden;
+    z-index: -10;
+  }
+
+  :global(body) {
     min-height: 100vh;
   }
 </style>

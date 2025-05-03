@@ -8,6 +8,7 @@
 
   //TODO: Redirect
   //TODO: Responsivity
+  //TODO: Pallete and Format change to new theme
 </script>
 
 {#if mounted}
