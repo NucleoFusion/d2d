@@ -8,6 +8,7 @@ services:
       - "5555:5555"
     volumes:
       - ./server:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=development
       - PORT=5555
@@ -22,6 +23,7 @@ services:
       - "5173:5173"
     volumes:
       - ./client:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=development
     depends_on:
