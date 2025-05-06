@@ -5,3 +5,78 @@
   --card-blur-rgba: 255, 255, 255, 0.05;
   --dull-text: #ffffffb3;
 }
+
+:root {
+  /* Color Palette - Core theme colors based on 60-30-10 rule */
+  --color-dominant: #1e1e1e; /* 60% - Cod Gray for main backgrounds */
+  --color-secondary: #696b6d; /* 30% - Nevada for secondary elements */
+  --color-accent: #9a7cd4; /* 10% - Lilac Bush for buttons, icons, highlights */
+  --color-text-primary: #f1f0f4; /* Athens Gray for primary text */
+  --color-text-secondary: #b0b2b5; /* Slightly darker than primary for secondary text */
+  --color-text-muted: #8a8c8f; /* Muted text for less emphasis */
+  --color-error: #e24250; /* Mandy for error messages or alerts */
+  --color-highlight: #0379bf; /* Lochmara for subtle highlights or hover effects */
+
+  /* Background Colors */
+  --bg-primary: var(--color-dominant); /* Main background */
+  --bg-secondary: #2a2a2a; /* Slightly lighter than dominant for layering */
+  --bg-card: var(--color-secondary); /* Card backgrounds */
+  --bg-header: var(--color-dominant); /* Header background */
+  --bg-footer: var(--color-dominant); /* Footer background */
+
+  /* Text Colors */
+  --text-primary: var(--color-text-primary); /* Main text color */
+  --text-secondary: var(--color-text-secondary); /* Secondary text */
+  --text-muted: var(--color-text-muted); /* Muted text for placeholders, etc. */
+  --text-error: var(--color-error); /* Error text */
+  --text-on-accent: #ffffff; /* Text on accent-colored elements like buttons */
+
+  /* Header Styles */
+  --header-bg: var(--bg-header); /* Header background */
+  --header-text: var(--text-primary); /* Header text */
+  --header-border: #3a3a3a; /* Subtle border for header if needed */
+
+  /* Button Styles */
+  --button-bg-primary: var(--color-accent); /* Primary button background */
+  --button-text-primary: var(--text-on-accent); /* Primary button text */
+  --button-bg-primary-hover: #7f63b8; /* Darker Lilac Bush on hover */
+  --button-bg-secondary: #3a3a3a; /* Secondary button background */
+  --button-text-secondary: var(--text-primary); /* Secondary button text */
+  --button-bg-secondary-hover: #4a4a4a; /* Lighter secondary on hover */
+  --button-border-radius: 8px; /* Rounded corners for buttons */
+  --button-padding: 10px 20px; /* Button padding */
+  --button-font-size: 16px; /* Button font size */
+
+  /* Card Styles */
+  --card-bg: var(--bg-card); /* Card background */
+  --card-text: var(--text-primary); /* Card text */
+  --card-border: #5a5c5f; /* Subtle border for cards */
+  --card-border-radius: 12px; /* Rounded corners for cards */
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  --card-padding: 20px; /* Card padding */
+
+  /* Link Styles */
+  --link-color: var(--color-accent); /* Link color */
+  --link-hover-color: var(--color-highlight); /* Link hover color */
+  --link-text-decoration: none; /* No underline by default */
+  --link-hover-text-decoration: underline; /* Underline on hover */
+
+  /* Border and Divider Styles */
+  --border-color: #3a3a3a; /* Default border color */
+  --border-radius: 8px; /* Default border radius for elements */
+  --divider-color: var(--border-color); /* Divider line color */
+
+  /* Shadow and Effects */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2); /* Small shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3); /* Medium shadow */
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4); /* Large shadow */
+  --transition-default: all 0.3s ease; /* Default transition for hover effects */
+
+  /* Spacing and Sizing */
+  --spacing-sm: 8px; /* Small spacing */
+  --spacing-md: 16px; /* Medium spacing */
+  --spacing-lg: 24px; /* Large spacing */
+  --font-size-base: 16px; /* Base font size */
+  --font-size-heading: 32px; /* Heading font size */
+  --font-size-subheading: 24px; /* Subheading font size */
+}

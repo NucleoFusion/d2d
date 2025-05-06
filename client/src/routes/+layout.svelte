@@ -16,7 +16,7 @@
 
     width: 100vw;
     height: 100vh;
-    background: var(--bg);
+    background: var(--bg-primary);
     overflow: hidden;
     z-index: -10;
   }

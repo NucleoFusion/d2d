@@ -52,7 +52,7 @@
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
 
-    background-color: rgb(44, 62, 80);
+    background-color: var(--card);
   }
 
   .form-input:focus ~ label,

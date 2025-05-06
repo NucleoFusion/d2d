@@ -105,7 +105,7 @@
 
 <style>
   .auth {
-    background-color: rgba(var(--card-blur-rgba));
+    background-color: var(--bg-secondary);
 
     width: 25vw;
     height: 60vh;
@@ -133,7 +133,7 @@
 
     border-radius: 10px;
 
-    color: white;
+    color: var(--text-primary);
 
     display: grid;
     grid-template-columns: 1fr;
@@ -169,18 +169,18 @@
     margin-left: 7.5vw;
 
     background-color: transparent;
-    border: solid white 1px;
+    border: solid var(--text-primary) 1px;
     border-radius: 10px;
 
-    color: white;
+    color: var(--text-primary);
     font-size: 1em;
 
     transition: all 0.3s ease;
   }
 
   .submit > button:hover {
-    background-color: white;
-    color: var(--bg);
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
     cursor: pointer;
   }
 
@@ -191,17 +191,14 @@
     border: none;
     border-radius: 8px;
 
-    color: white;
+    color: var(--link-color);
     font-size: 1em;
 
-    text-decoration: underline;
-
     cursor: pointer;
-
-    transition: all 0.3s ease;
   }
 
   .toggle-button:hover {
-    background-color: rgb(0, 0, 0, 0.2);
+    color: var(--link-hover-color);
+    text-decoration: underline;
   }
 </style>
