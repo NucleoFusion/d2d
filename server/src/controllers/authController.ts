@@ -3,22 +3,22 @@ import pgdb from '../databases/postgres';
 import { users } from '../databases/postgres/schema/users';
 import { compare, genSalt, hash } from 'bcrypt-ts';
 import { eq } from 'drizzle-orm';
-import { GenerateToken } from '../services/tokenManager';
-
-//TODO: Forgot Password
-//TODO: Cookie Auth
-//TODO: Tests
-//TODO: Make sure that not more than 1 token for a user. give back the token if already exists.
-//TODO: Confirm Password
-//TODO: Refactor to remove DOB
+import { FindOrGenerateToken, GenerateToken } from '../services/tokenManager';
 
 export const register = async (req: Request, res: Response) => {
   const { name, email, password, confirmPassword } = req.body;
 
   //Validations
-  if (!(name && email && password)) {
+  if (!(name && email && password && confirmPassword)) {
     res.status(400).json({
       error: 'Missing parameters',
+    });
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    res.status(400).json({
+      error: 'Passwords dont match',
     });
     return;
   }
@@ -119,12 +119,11 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
 
+  const token = FindOrGenerateToken(email, result[0].id);
+
   res.status(200).json({
     auth: true,
-    message: 'Authentication successful',
-    user: {
-      id: result[0].id,
-    },
+    token,
   });
 };
 
@@ -132,13 +131,13 @@ const validEmail = (email: string) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
-const validDate = (date: string) => {
-  const dobFormatted = new Date(date);
-  const currDate = new Date();
-
-  if (isNaN(dobFormatted.getTime())) {
-    return false;
-  }
-
-  return currDate > dobFormatted;
-};
+// const validDate = (date: string) => {
+//   const dobFormatted = new Date(date);
+//   const currDate = new Date();
+//
+//   if (isNaN(dobFormatted.getTime())) {
+//     return false;
+//   }
+//
+//   return currDate > dobFormatted;
+// };

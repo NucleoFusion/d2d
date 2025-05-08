@@ -3,16 +3,33 @@ import valkey from '../databases/valkey/valkey';
 
 const EXPIRY = 60 * 60 * 16;
 
-export function GenerateToken(email: string, id: number): string {
+export async function GenerateToken(email: string, id: number) {
   const rand = randString();
 
   const hashed = createHash('sha256')
     .update(rand + email + rand)
     .digest('hex');
 
+  const res = await valkey.get(hashed);
+
+  if (res != null) {
+    return GenerateToken(email, id);
+  }
+
   valkey.set(hashed, id, 'EX', EXPIRY);
+  valkey.set(`value:${id}`, hashed, 'EX', EXPIRY);
 
   return hashed;
+}
+
+export async function FindOrGenerateToken(email: string, id: number) {
+  const res = await valkey.get(`value: ${id}`);
+
+  if (res == null) {
+    return await GenerateToken(email, id);
+  }
+
+  return res;
 }
 
 export async function verifyToken(token: string) {

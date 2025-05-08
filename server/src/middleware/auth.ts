@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { verifyToken } from '../services/tokenManager';
 
+//TODO: store id
+
 const authMiddleware = async (
   req: Request,
   res: Response,
@@ -14,8 +16,7 @@ const authMiddleware = async (
 
   if (!bearer) {
     res.status(401).json({
-      message:
-        'Missing Authorization token. Please make sure you are logged in.',
+      error: 'Missing Authorization token. Please make sure you are logged in.',
     });
     return;
   }
@@ -25,8 +26,7 @@ const authMiddleware = async (
 
   if (!token) {
     res.status(401).json({
-      message:
-        'Missing Authorization token. Please make sure you are logged in.',
+      error: 'Missing Authorization token. Please make sure you are logged in.',
     });
     return;
   }
@@ -35,7 +35,7 @@ const authMiddleware = async (
 
   if (id == null) {
     res.status(401).json({
-      message: 'Expired and/or Invalid token.',
+      error: 'Expired and/or Invalid token.',
     });
 
     return;
