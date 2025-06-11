@@ -3,25 +3,34 @@
 </script>
 
 <div class="bg"></div>
+
 {@render children()}
 
 <style>
   @import "./global.css";
 
   .bg {
-    position: absolute;
-
+    position: fixed;
     top: 0;
     left: 0;
-
-    width: 100vw;
-    height: 100vh;
-    background: var(--bg-primary);
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
     z-index: -10;
+    overflow: hidden;
+    background-color: var(--color-bg-primary);
+    background-image: var(--bg-noise), var(--bg-radial-gradient);
   }
-
-  :global(body) {
-    min-height: 100vh;
-  }
+  bg::before {
+   content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(138, 99, 210, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(209, 99, 169, 0.1) 0%, transparent 25%);
+  pointer-events: none;
+  z-index: -1;
+}
 </style>
