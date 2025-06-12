@@ -7,7 +7,7 @@
   /* Text Colors */
   --color-text-primary: #ffffff;     /* Primary text */
   --color-text-secondary: #b0b0c0;   /* Secondary text */
-  --color-text-accent: #8a63d2;      /* Accent color (purple) */
+  --color-text-accent: #2B3D54;      /* Accent color (purple) */
   
   /* Accent Colors */
   --color-accent-primary: #8a63d2;   /* Main accent */
@@ -22,16 +22,16 @@
   --bg-radial-gradient: radial-gradient(circle at 75% 25%, rgba(138, 99, 210, 0.15) 0%, transparent 50%);
 }
 
-html, body {
-  width: 100vw;
-  height: 100vh;
-  min-width: 100vw;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
+html, body ,#svelte{
+   min-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 *, *::before, *::after {
   box-sizing: inherit;
 }
+ 

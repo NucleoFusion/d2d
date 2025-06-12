@@ -1,8 +1,49 @@
 <script lang="ts">
   let { children } = $props();
+   
+const bubbleCount = 6;
+
+  
+  function randomBubble(i: number) {
+   
+    function seededRandom(seed: number) {
+      let x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    }
+    const size = seededRandom(i + 1) * 180 + 120; 
+    const top = seededRandom(i + 2) * 100; 
+    const left = seededRandom(i + 3) * 100; 
+    const blur = seededRandom(i + 4) * 30 + 70; 
+    const colors = [
+      "--color-text-accent",
+      "--color-accent-primary",
+      "--color-text-accent",
+      "--color-text-accent",
+      " --color-border"
+    ];
+    const color = colors[i % colors.length];
+    return { size, top, left, blur, color };
+  }
+
+ 
+  const bubbles = Array.from({ length: bubbleCount }, (_, i) => randomBubble(i));
 </script>
 
-<div class="bg"></div>
+<div class="bg">
+{#each bubbles as bubble, i (i)}
+    <div
+      class="bubble"
+      style="
+        width: {bubble.size}px;
+        height: {bubble.size}px;
+        top: {bubble.top}%;
+        left: {bubble.left}%;
+        background: var({bubble.color});
+        filter: blur({bubble.blur}px);
+      "
+    ></div>
+  {/each}
+</div>
 
 {@render children()}
 
@@ -10,27 +51,24 @@
   @import "./global.css";
 
   .bg {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
+    min-height: 100vh;
     height: 100%;
     z-index: -10;
     overflow: hidden;
     background-color: var(--color-bg-primary);
     background-image: var(--bg-noise), var(--bg-radial-gradient);
+    pointer-events: none;
   }
-  bg::before {
-   content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(138, 99, 210, 0.1) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(209, 99, 169, 0.1) 0%, transparent 25%);
-  pointer-events: none;
-  z-index: -1;
-}
+ 
+ .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: filter 0.5s, opacity 0.5s;
+    will-change: filter, opacity;
+  }
 </style>

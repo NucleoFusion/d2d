@@ -110,7 +110,7 @@
     width: 25vw;
     height: 60vh;
 
-    margin: 17vh 36.25vw;
+    margin: 17vh auto;
 
     padding: 1.5vw;
 
@@ -123,6 +123,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+   overflow-x: hidden;
+   box-sizing: border-box;
   }
 
   .auth > form {
