@@ -1,17 +1,17 @@
 :root {
   /* Base Colors */
-  --color-bg-primary: #0a0a0f;       /* Main background */
+  --color-bg-primary: #1F1F1F;       /* Main background */
   --color-bg-secondary: #121218;    /* Secondary surfaces */
   --color-bg-tertiary: #1a1a24;     /* Accent surfaces */
   
   /* Text Colors */
   --color-text-primary: #ffffff;     /* Primary text */
   --color-text-secondary: #b0b0c0;   /* Secondary text */
-  --color-text-accent: #2B3D54;      /* Accent color (purple) */
+  --color-text-accent: #2C3741;      /* Accent color (purple) */
   
   /* Accent Colors */
-  --color-accent-primary: #8a63d2;   /* Main accent */
-  --color-accent-secondary: #d163a9; /* Secondary accent */
+  --color-accent-primary: #9D7CD8;   /* Main accent */
+  --color-accent-secondary: #7AA2F7; /* Secondary accent */
   
   /* Utility Colors */
   --color-border: rgba(255, 255, 255, 0.1);

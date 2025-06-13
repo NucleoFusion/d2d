@@ -45,14 +45,11 @@
 
     font-size: 1.1rem;
 
-    color: var(--text);
+    color: var(--color-text-primary);
 
-    background-color: var(--mantle);
+    background-color: var(--color-bg-primary);
 
-    margin-top: -10px;
-    margin-left: 25vw;
-
-    border: solid var(--border) 1px;
+    border: solid var(--color-border) 1px;
 
     border-radius: 20px;
     border-top-right-radius: 0;
@@ -61,11 +58,11 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr;
-    gap: 2vw;
 
     justify-content: center;
     align-items: center;
     text-align: center;
+    align-self: center;
   }
 
   ul {
@@ -90,7 +87,7 @@
 
     background-color: transparent;
 
-    border: solid 1px var(--border);
+    border: solid 1px var(--color-shadow);
     border-radius: 5px;
 
     color: var(--text);
@@ -99,11 +96,11 @@
   }
 
   li > button:hover {
-    background-color: var(--text);
+    background-color: var(--color-shadow);
 
-    border: solid 1px var(--border);
+    border: solid 1px var(--color-border);
 
-    color: var(--mantle);
+    color: var(--color-accent-primary);
   }
 
   button:has(img) {

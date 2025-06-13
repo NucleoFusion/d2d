@@ -1,50 +1,36 @@
 <script lang="ts">
+  import Navbar from "../components/navbar/navbar.svelte";
   let { children } = $props();
-   
-const bubbleCount = 6;
 
-  
-  function randomBubble(i: number) {
-   
-    function seededRandom(seed: number) {
-      let x = Math.sin(seed) * 10000;
-      return x - Math.floor(x);
-    }
-    const size = seededRandom(i + 1) * 180 + 120; 
-    const top = seededRandom(i + 2) * 100; 
-    const left = seededRandom(i + 3) * 100; 
-    const blur = seededRandom(i + 4) * 30 + 70; 
-    const colors = [
-      "--color-text-accent",
-      "--color-accent-primary",
-      "--color-text-accent",
-      "--color-text-accent",
-      " --color-border"
-    ];
-    const color = colors[i % colors.length];
-    return { size, top, left, blur, color };
-  }
-
- 
-  const bubbles = Array.from({ length: bubbleCount }, (_, i) => randomBubble(i));
+  const bubbles = [
+    { size: 220, top: 75, left: 25, blur: 100, color: "--color-text-accent" },
+    { size: 180, top: 70, left: 80, blur: 90, color: "--color-text-accent" },
+    { size: 150, top: 80, left: 30, blur: 90, color: "--color-text-accent" },
+    { size: 200, top: 80, left: 60, blur: 90, color: "--color-text-accent" },
+    { size: 170, top: 60, left: 80, blur: 90, color: "--color-text-accent" },
+    { size: 140, top: 80, left: 10, blur: 90, color: "--color-text-accent" },
+    { size: 140, top: 80, left: 20, blur: 90, color: "--color-text-accent" },
+  ];
 </script>
 
 <div class="bg">
-{#each bubbles as bubble, i (i)}
+  {#each bubbles as bubble, i (i)}
     <div
       class="bubble"
       style="
-        width: {bubble.size}px;
-        height: {bubble.size}px;
-        top: {bubble.top}%;
-        left: {bubble.left}%;
-        background: var({bubble.color});
-        filter: blur({bubble.blur}px);
+        --bubble-width: {bubble.size}px;
+        --bubble-height: {bubble.size}px;
+        --bubble-top: {bubble.top}%;
+        --bubble-left: {bubble.left}%;
+        --bubble-bg: var({bubble.color});
+        --bubble-blur: {bubble.blur}px;
       "
     ></div>
   {/each}
 </div>
-
+<div class="navbar-container">
+  <Navbar />
+</div>
 {@render children()}
 
 <style>
@@ -63,12 +49,31 @@ const bubbleCount = 6;
     background-image: var(--bg-noise), var(--bg-radial-gradient);
     pointer-events: none;
   }
- 
- .bubble {
+
+  .bubble {
     position: absolute;
+    width: var(--bubble-width);
+    height: var(--bubble-height);
+    top: var(--bubble-top);
+    left: var(--bubble-left);
+    background: var(--bubble-bg);
+    filter: blur(var(--bubble-blur));
     border-radius: 50%;
     opacity: 0.8;
-    transition: filter 0.5s, opacity 0.5s;
+    transition:
+      filter 0.5s,
+      opacity 0.5s;
     will-change: filter, opacity;
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    z-index: 100;
   }
 </style>
