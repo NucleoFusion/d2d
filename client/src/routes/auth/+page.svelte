@@ -3,7 +3,7 @@
 
   var isLogin = true;
 
-  let email: string, password: string, name: string, dob: string;
+  let email: string, password: string, name: string, confirmPassword: string;
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -12,13 +12,15 @@
       email,
       password,
       name,
-      dob,
+      confirmPassword,
     };
 
     console.log(data);
 
     const fetchUrl =
       "http://localhost:5555/auth/" + (isLogin ? "login" : "register");
+
+    const err = runValidations();
 
     fetch(fetchUrl, {
       method: "POST",
@@ -33,6 +35,22 @@
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const runValidations = () => {
+    if (!email || !password) {
+      return "missing values";
+    }
+
+    if (!isLogin) {
+      if (!name || !confirmPassword) {
+        return "missing values";
+      }
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return "invalid email";
+    }
   };
 </script>
 
@@ -70,10 +88,10 @@
         <div></div>
       {:else}
         <InputField
-          bind:value={dob}
-          name="dob"
-          type="date"
-          title="Date of Birth"
+          bind:value={confirmPassword}
+          name="confirmPassword"
+          type="password"
+          title="Confirm Password"
         />
       {/if}
 

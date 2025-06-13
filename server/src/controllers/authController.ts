@@ -3,18 +3,22 @@ import pgdb from '../databases/postgres';
 import { users } from '../databases/postgres/schema/users';
 import { compare, genSalt, hash } from 'bcrypt-ts';
 import { eq } from 'drizzle-orm';
-
-//TODO: Forgot Password
-//TODO: Cookie Auth
-//TODO: Tests
+import { FindOrGenerateToken, GenerateToken } from '../services/tokenManager';
 
 export const register = async (req: Request, res: Response) => {
-  const { name, email, password, dob } = req.body;
+  const { name, email, password, confirmPassword } = req.body;
 
   //Validations
-  if (!(name && email && password && dob)) {
+  if (!(name && email && password && confirmPassword)) {
     res.status(400).json({
       error: 'Missing parameters',
+    });
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    res.status(400).json({
+      error: 'Passwords dont match',
     });
     return;
   }
@@ -22,13 +26,6 @@ export const register = async (req: Request, res: Response) => {
   if (!validEmail(email)) {
     res.status(400).json({
       error: 'Invalid email format',
-    });
-    return;
-  }
-
-  if (!validDate(dob)) {
-    res.status(400).json({
-      error: 'Invalid date format',
     });
     return;
   }
@@ -59,8 +56,8 @@ export const register = async (req: Request, res: Response) => {
       name,
       email,
       password: hashed,
-      dob,
     })
+    .returning()
     .catch((err) => {
       res.status(500).json({
         error: err,
@@ -69,13 +66,15 @@ export const register = async (req: Request, res: Response) => {
 
   if (!result) return; //return if error occured, since itll be caught by .catch();
 
-  res.sendStatus(200);
+  const token = GenerateToken(email, result[0].id);
+
+  res.status(200).json({
+    token,
+  });
 };
 
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-
-  console.log(req.body, req.headers);
 
   // Validations
   if (!(email && password)) {
@@ -120,12 +119,11 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
 
+  const token = FindOrGenerateToken(email, result[0].id);
+
   res.status(200).json({
     auth: true,
-    message: 'Authentication successful',
-    user: {
-      id: result[0].id,
-    },
+    token,
   });
 };
 
@@ -133,15 +131,13 @@ const validEmail = (email: string) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
-const validDate = (date: string) => {
-  const dobFormatted = new Date(date);
-  const currDate = new Date();
-
-  console.log(dobFormatted);
-
-  if (isNaN(dobFormatted.getTime())) {
-    return false;
-  }
-
-  return currDate > dobFormatted;
-};
+// const validDate = (date: string) => {
+//   const dobFormatted = new Date(date);
+//   const currDate = new Date();
+//
+//   if (isNaN(dobFormatted.getTime())) {
+//     return false;
+//   }
+//
+//   return currDate > dobFormatted;
+// };
