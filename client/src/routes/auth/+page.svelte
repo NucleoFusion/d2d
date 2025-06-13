@@ -123,12 +123,12 @@
 
 <style>
   .auth {
-    background-color: var(--bg-secondary);
+    background-color: var(--color-bg-secondary);
 
     width: 25vw;
     height: 60vh;
 
-    margin: 17vh 36.25vw;
+    margin: 17vh auto;
 
     padding: 1.5vw;
 
@@ -141,17 +141,19 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+   overflow-x: hidden;
+   box-sizing: border-box;
   }
 
   .auth > form {
-    background-color: var(--card);
+    background-color: var(--color-bg-tertiary);
 
     width: 100%;
     height: 100%;
 
     border-radius: 10px;
 
-    color: var(--text-primary);
+    color: var(--color-text-primary);
 
     display: grid;
     grid-template-columns: 1fr;
@@ -187,18 +189,18 @@
     margin-left: 7.5vw;
 
     background-color: transparent;
-    border: solid var(--text-primary) 1px;
+    border: solid var(--color-border) 1px;
     border-radius: 10px;
 
-    color: var(--text-primary);
+    color: var(--color-text-primary);
     font-size: 1em;
 
     transition: all 0.3s ease;
   }
 
   .submit > button:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-primary);
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
     cursor: pointer;
   }
 
