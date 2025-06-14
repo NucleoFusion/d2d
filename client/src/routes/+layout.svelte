@@ -37,10 +37,12 @@
   @import "./global.css";
 
   .bg {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     height: 100%;
     z-index: -10;
