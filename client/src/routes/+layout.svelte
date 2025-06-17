@@ -1,5 +1,7 @@
 <script lang="ts">
   import Navbar from "../components/navbar/navbar.svelte";
+  import Footer from "../components/footer/footer.svelte";
+  import "./global.css";
   let { children } = $props();
 
   const bubbles = [
@@ -32,6 +34,9 @@
   <Navbar />
 </div>
 {@render children()}
+<div class="footer-container">
+  <Footer />
+</div>
 
 <style>
   @import "./global.css";
@@ -68,11 +73,21 @@
     will-change: filter, opacity;
   }
   .navbar-container {
+    justify-content: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    z-index: 100;
+  }
+  .footer-container {
     display: flex;
     justify-content: center;
-    width: 100vw;
-    position: fixed;
-    top: 0;
+    width: 100%;
+    padding: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     margin: 0;
