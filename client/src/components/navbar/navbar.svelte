@@ -12,8 +12,8 @@
   <div class="main-navbar__content">
     <!-- Logo -->
     <a href="/" class="main-navbar__logo">
-      <span class="main-navbar__logo-icon">{"<"}</span>
-      <span class="main-navbar__logo-icon">✏️</span>
+      <!-- <span class="main-navbar__logo-icon">{"<"}</span>
+      <span class="main-navbar__logo-icon">✏️</span> -->
       <span class="main-navbar__logo-text">
         <b>D2<span class="main-navbar__logo-accent">D</span></b>
       </span>

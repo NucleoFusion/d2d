@@ -4,7 +4,7 @@
   /* Main background */
   --color-bg-secondary: #2C3741;
   /* Secondary surfaces */
-  --color-bg-tertiary:#1A1A28;
+  --color-bg-tertiary: #1A1A28;
   /* Accent surfaces */
 
   /* Text Colors */
@@ -30,6 +30,7 @@
   --bg-radial-gradient: radial-gradient(circle at 75% 25%, rgba(138, 99, 210, 0.15) 0%, transparent 50%);
 }
 
+
 html,
 body,
 #svelte {
@@ -40,11 +41,20 @@ body,
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
-
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
