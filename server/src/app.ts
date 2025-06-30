@@ -3,6 +3,7 @@
 import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
 import authRouter from './routes/auth';
+import postsRouter from './routes/posts';
 import cors from 'cors';
 import authMiddleware from './middleware/auth';
 import logger from './middleware/logger';
@@ -20,6 +21,7 @@ app.use(logger);
 
 // Routes
 app.use('/auth', authRouter);
+app.use('/posts', postsRouter);
 
 app.get('/ping', (_: Request, res: Response) => {
   res.json({
