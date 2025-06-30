@@ -1,21 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ES6", // JavaScript version for the output
-    "module": "commonjs", // Module system for the output
-    "strict": true, // Enable all strict type-checking options
-    "esModuleInterop": true, // Allow default imports from modules without a default export
-    "skipLibCheck": true, // Skip type checking of declaration files
-    "forceConsistentCasingInFileNames": true, // Ensure consistent casing of file names
-    "outDir": "./dist", // Specify the output directory for build files
-    "rootDir": "./src", // Specify the root directory for your TypeScript files
-    "declaration": true, // Generate declaration files (.d.ts)
-    "sourceMap": true // Generate source maps for easier debugging
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "sourceMap": true,
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": [
-    "src/**/*", // Include all files under the "src" folder
+    "src/**/*",
+    "types/**/*",
     "drizzle.config.ts"
   ],
+  "files": [
+    "./types/express/index.d.ts"
+  ],
   "exclude": [
-    "node_modules" // Exclude node_modules
+    "node_modules"
   ]
 }

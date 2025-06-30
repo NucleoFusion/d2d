@@ -65,12 +65,11 @@ export const register = async (req: Request, res: Response) => {
     });
 
   if (!result) return; //return if error occured, since itll be caught by .catch();
-
-  const token = GenerateToken(email, result[0].id);
-
-  res.status(200).json({
-    token,
-  });
+const token = await GenerateToken(email, result[0].id);
+res.status(200).json({
+  message: "Registration successful!",
+  token,
+});
 };
 
 export const login = async (req: Request, res: Response) => {
@@ -119,10 +118,11 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
 
-  const token = FindOrGenerateToken(email, result[0].id);
+  const token = await FindOrGenerateToken(email, result[0].id);
 
   res.status(200).json({
     auth: true,
+    message: "Login successful!",
     token,
   });
 };
