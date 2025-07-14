@@ -141,8 +141,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-   overflow-x: hidden;
-   box-sizing: border-box;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   .auth > form {
