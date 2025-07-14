@@ -4,8 +4,9 @@ import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
 import authRouter from './routes/auth';
 import postsRouter from './routes/posts';
+import tagsRouter from './routes/tags';
 import cors from 'cors';
-import authMiddleware from './middleware/auth';
+// import authMiddleware from './middleware/auth';
 import logger from './middleware/logger';
 
 const app = express();
@@ -16,12 +17,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors<Request>());
 
 //Middleware
-app.use(authMiddleware);
+// app.use(authMiddleware);
 app.use(logger);
 
 // Routes
 app.use('/auth', authRouter);
 app.use('/posts', postsRouter);
+app.use('/tags', tagsRouter);
 
 app.get('/ping', (_: Request, res: Response) => {
   res.json({
