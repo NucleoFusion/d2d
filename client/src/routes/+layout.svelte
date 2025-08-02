@@ -1,5 +1,12 @@
 <script lang="ts">
   import Navbar from "../components/navbar/navbar.svelte";
+  import { onMount } from 'svelte';
+  import { checkAuth } from '$lib/stores/auth';
+  import "./global.css";
+
+  onMount(() => {
+    checkAuth(); // ✅ Ensures auth state is loaded once at app startup
+  });
   let { children } = $props();
 
   const bubbles = [
@@ -37,10 +44,12 @@
   @import "./global.css";
 
   .bg {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     height: 100%;
     z-index: -10;
@@ -66,10 +75,9 @@
     will-change: filter, opacity;
   }
   .navbar-container {
-    display: flex;
     justify-content: center;
-    width: 100vw;
-    position: fixed;
+    width: 100%;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;

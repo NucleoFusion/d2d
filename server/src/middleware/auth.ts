@@ -40,7 +40,9 @@ const authMiddleware = async (
 
     return;
   }
-
+  // Set req.userId here!
+  req.userId = Number(id);
+  
   next();
 };
 
