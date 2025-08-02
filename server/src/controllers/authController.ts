@@ -69,6 +69,8 @@ const token = await GenerateToken(email, result[0].id);
 res.status(200).json({
   message: "Registration successful!",
   token,
+  userId: result[0].id,
+  email,
 });
 };
 
@@ -121,9 +123,11 @@ export const login = async (req: Request, res: Response) => {
   const token = await FindOrGenerateToken(email, result[0].id);
 
   res.status(200).json({
-    auth: true,
-    message: "Login successful!",
-    token,
+  auth: true,
+  message: "Login successful!",
+  token,
+  userId: result[0].id,
+  email,
   });
 };
 

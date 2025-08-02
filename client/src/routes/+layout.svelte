@@ -1,7 +1,12 @@
 <script lang="ts">
   import Navbar from "../components/navbar/navbar.svelte";
-
+  import { onMount } from 'svelte';
+  import { checkAuth } from '$lib/stores/auth';
   import "./global.css";
+
+  onMount(() => {
+    checkAuth(); // ✅ Ensures auth state is loaded once at app startup
+  });
   let { children } = $props();
 
   const bubbles = [
